@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Select Account</title>
+    <style>
+      body {
+        margin: 0;
+        background-color: black;
+      }
+      .space {
+        padding-top: 100px;
+      }
+      button {
+        height: 50px;
+        width: 200px;
+        margin-left: 84%;
+        border-radius: 20px;
+        background-color: green;
+        outline: none;
+        color: white;
+        font-size: 1em;
+        border: none;
+        font-weight: 500;
+      }
+      img {
+        height: 120px;
+        width: 120px;
+        border-radius: 50%;
+        margin-top: auto;
+        margin-bottom: auto;
+      }
+      .panel {
+        background-color: white;
+        display: flex;
+        padding: 50px 50px 50px 50px;
+        justify-content: space-between;
+        margin: 100px 100px 100px 100px;
+        background-color: black;
+        border-radius: 20px;
+        border: solid 2px rgb(36, 36, 36);
+      }
+
+      .msg_count {
+        font-size: 2em;
+        font-family: Arial, Helvetica, sans-serif;
+        color: white;
+      }
+      .name {
+        font-size: 2em;
+
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+      }
+      .chat_status {
+        font-family: Arial, Helvetica, sans-serif;
+
+        color: white;
+        font-size: 2em;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="space">
+      <button id="logout">logout</button>
+      <div id="zpanel" class="panel">
+        <img src="zafnann.jpg" />
+        <h2 class="name">zafnann</h2>
+        <h2 class="msg_count">948393</h2>
+        <h2 id="z" class="chat_status">Not Accessible</h2>
+      </div>
+      <div id="hpanel" class="panel">
+        <img src="heyvaish.jpg" />
+        <h2 class="name">heyvaish</h2>
+        <h2 class="msg_count">948393</h2>
+        <h2 id="h" class="chat_status">Not Accessible</h2>
+      </div>
+      <div id="apanel" class="panel">
+        <img src="afnayn.jpg" />
+        <h2 class="name">afnayn</h2>
+        <h2 class="msg_count">948393</h2>
+        <h2 id="a" class="chat_status">Not Accessible</h2>
+      </div>
+    </div>
+    <script>
+      var accounts = JSON.parse(localStorage.getItem("accounts"));
+      for (x in accounts) {
+        if (accounts[x].email === "zafnann") {
+          let z = document.getElementById("z");
+          z.textContent = "Accessible";
+          z.style.color = "green";
+        }
+        if (accounts[x].email === "heyvaish") {
+          let z = document.getElementById("h");
+          z.textContent = "Accessible";
+          z.style.color = "green";
+        }
+        if (accounts[x].email === "afnayn") {
+          let z = document.getElementById("a");
+          z.style.color = "green";
+          z.textContent = "Accessible";
+        }
+      }
+
+      var panel = document.getElementsByClassName("panel");
+      panel[0].addEventListener("click", () => {
+        localStorage.setItem("current_state", "zafnann");
+        window.location.href = "chat.html";
+      });
+
+      panel[1].addEventListener("click", () => {
+        localStorage.setItem("current_state", "heyvaish");
+
+        window.location.href = "chat.html";
+      });
+
+      panel[2].addEventListener("click", () => {
+        localStorage.setItem("current_state", "afnayn");
+
+        window.location.href = "chat.html";
+      });
+
+      document.getElementById("logout").addEventListener("click", () => {
+        localStorage.setItem("status", "logout");
+        window.location.href = "index.html";
+      });
+    </script>
+  </body>
+</html>
